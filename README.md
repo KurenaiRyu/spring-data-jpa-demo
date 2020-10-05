@@ -6,7 +6,24 @@
 ```shell script
 mvn compile
 ```
-或是通过IDE生成
+或是通过IDE生成  
 
+pgdb docker-compose:
+```yaml
+version: '3.7' # specify docker-compose version
+
+services:
+  test-pgdb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: test
+      POSTGRES_USER: user
+    volumes:
+      - ./data:/var/lib/postgresql
+```
 ## Reference
 [helidon-sample](https://github.com/hantsy/helidon-sample/blob/master/mp-jpa/src/main/java/com/example/PostRepository.java) @ [hantsy](https://github.com/hantsy)
